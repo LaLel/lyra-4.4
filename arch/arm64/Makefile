@@ -61,6 +61,10 @@ endif
 
 KBUILD_CFLAGS	+= $(call cc-option,-march=armv8-a+crypto+crc,) \
 	$(call cc-option,-mcpu=cortex-a53+crypto+crc,)
+KBUILD_AFLAGS   += $(call cc-option,-march=armv8-a+crypto+crc,) \
+        $(call cc-option,-mcpu=cortex-a53+crypto+crc,)
+GEN_FLAGS 	:= -fopenmp
+KBUILD_CFLAGS	+= $(GEN_FLAGS)
 
 ifeq ($(cc-name),clang)
 # This is a workaround for https://bugs.llvm.org/show_bug.cgi?id=30792.
